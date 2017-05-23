@@ -117,7 +117,14 @@ Em relação ao desempenho, pode-se dizer que este editor pode ser comparado a a
 ## Mecanismos arquiteturais
 Neste ponto, iremos listar alguns dos mecanismos arquiteturais encontrados no aplicativo.
 
--------------------- tabela ---------------------------------
+ 
+MECANISMO DE ANÁLISE       | MECANISMO DE DESIGN                               | MECANISMO DE IMPLEMENTAÇÃO
+---------------------------|---------------------------------------------------|----------------------------
+Front-End                  |Interface de comunicação com o usuário do portal.  |CSS, HTML, JavaScript
+Build                      |Programação da IDE para validação do código fonte. |ACE e Architect
+Deploy                     |Configuração da IDE de deploy.                     |ACE e Architect
+Recursos avançados de Web  |Implementação de recursos para usabilidade.        |CSS e JavaScript
+
 
 ## Problemas de implementação
 Ao longo do desenvolvimento do aplicativo, vários bugs e outros tipos de problemas foram encontrados pelos colaboradores principais, e também pelos muitos usuários e outros colaboradores do projeto que reportam falhas. Ao fazer uma leitura rápidas desses problemas, percebe-se que não são usuários iniciantes que reportam essas falhas, devido ao nível de conhecimento necessário para poder fazer tais relatos.
