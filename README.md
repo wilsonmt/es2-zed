@@ -20,8 +20,8 @@ Algumas funcionalidades incluídas com o objetivo de agregar valor foram:
 ## Informações da equipe de desenvolvimento
 Desde o seu início, já se passaram ao todo pelo time de desenvolvimento do Zed 40 contribuidores. Destes, podemos visualizar uma relação de participação de acordo com o número de commits por usuário no gráfico abaixo:
  
- --------------------- falta imagem ------------------------
- 
+![](https://lh4.googleusercontent.com/NPd-JkwxAq_d98kfDvPavA6lJ8dGxkLFfQF-_LbKCNN10lyFap9Y5zwOESXH3JzWXybMMSQ2ky4suYiFqzzGXxN_mB3td-Mj42dTgaKPV2AkauFnuvgDUJPPn8IFqTlGzAab6_Uc)
+
 Embora o número de contribuidores seja considerável, podemos observar que a maioria destes teve uma participação muito breve no projeto, sendo que, os contribuintes #37 e #40, por exemplo, fizeram um commit alterando apenas uma linha de código. O membro que mais contribuiu na aplicação foi, como o esperado, o autor dos códigos principais, Zef Hemel com um total de 698 commits.
 
 ### Zef Hemel
