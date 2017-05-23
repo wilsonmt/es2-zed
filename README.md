@@ -114,7 +114,7 @@ Após escolher o formato desejado, basta clicar em “Start using Zed” para co
 
 Em relação ao desempenho, pode-se dizer que este editor pode ser comparado a aqueles mais utilizados pelo programadores, como o Sublime e o o Atom. Um outro requisito não-funcional que podemos citar é a interoperabilidade, o Zed funciona tanto com repositórios, como o GitHub e o DropBox, como arquivos locais e remotos. Já em relação a segurança que é um outro requisito não-funcional, podemos dizer que é um aplicativo seguro, mas que depende do usuário manter senhas confiáveis do Chrome, e dos repositórios que possui, dessa forma os arquivos mantidos no Zed só poderão ser acessados por terceiros se souberem a senha ou se invadirem  o computador e os arquivos estiverem sem a devida proteção.
 
-##Mecanismos arquiteturais
+## Mecanismos arquiteturais
 Neste ponto, iremos listar alguns dos mecanismos arquiteturais encontrados no aplicativo.
 
 -------------------- tabela ---------------------------------
