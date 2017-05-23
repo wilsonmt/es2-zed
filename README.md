@@ -28,11 +28,12 @@ Embora o número de contribuidores seja considerável, podemos observar que a ma
 Zef Hemel é PhD em ciência da Computação pela _Delft University of Technology_ (2007–2011). Suas pesquisas incluem design e implementação de várias linguagens de programação, especificamente Linguagens de Domínio específico (DSL), assim como ferramentas para as mesmas. Trabalhou em duas linguagens principais: WebDSL (para o desenvolvimento rápido de aplicações Web) e mobl (desenvolvimento rápido de aplicações Web para dispositivos móveis). O Zed foi um de seus principais projetos paralelos.
 No gráfico abaixo, está representada a linha do tempo dos commits do programa desde o seu início em 2013. Podemos perceber que após o ano de 2015 a movimentação sobre o programa em geral foi bastante reduzido, sendo que, de 2016 até o momento atual não são indicadas nenhuma alteração nos registros do GitHub.
 
---------------------- falta imagem ------------------------
+![](https://lh6.googleusercontent.com/EvNlypeY63fXMuOQy2daYhy3-MV4v_wtXlpfA_-FCd9FeoSe2GxcKF9HNkXOiVkscsgaGzqeltBgWz_xRrMbe5zusTxXP1oh9lwYbSFwEil-v1mJf3-SPbSK3ZcErc4H42zAiFwU)
 
 Evidenciando uma possível diminuição no fluxo de alterações nos últimos dois anos, o gráfico abaixo representa o número de adições e deleções por semana desde o começo do aplicativo e ele nos confirma que depois de 04/15 não há mais alterações implementadas no Zed.
 
---------------------- falta imagem ------------------------
+![](https://lh5.googleusercontent.com/vqmkbsA1Jq2yPTB69qknZZ1Re2PKqVOhyThDfV3gV0LY_3W-M1kQ-YInawxoXdNK-bqhnt1aVXi8UfkHh8s4l9deWV0cifMjMu9PAJiUIwxwm7867yGtZ8V_apXTv87LEhS8sovX)
+
 
 ## Descrição da evolução do sistema 
 
@@ -45,26 +46,8 @@ Atualmente no GitHub, o Zed conta com quatro branches:
 * rx
 
 ### Histórico de revisões
-Em suas versões atualmente disponibilizadas no GitHub, o Zed conta com um total de 27 versões. As duas primeiras versões (0.7.2 e 0.7.2), ainda trouxeram mudanças estruturais do sistema, como a substituição do comando go to pelo ACE editor, que é um editor de código embutido, é escrito em JavaScript e é substancialmente mais rápido especialmente em projetos maiores. Além dessa, foram implementadas funcionalidades para comandos de teclado como o _Up_ ou _Shift-Tab_ para subir e _Down_ ou _Tab_ para descer a lista e _Enter_ para abrir o projeto selecionado.
-
-A partir da versão 0.8.0 já começamos a encontrar mudanças mais relativas à personalização do produto. São elas:
-
-* A mudança do suporte "zed - local" para o uso do suporte ao Chrome 31 + Pasta Local;
-* Mudança de comportamento de criação de arquivo: ao criar acidentalmente um arquivo, por exemplo, navegando para /whoops e pressionando enter, o arquivo agora é criado somente quando você digita algo nele. Se você navegar imediatamente, o arquivo não será criado;
-* Sugestões de melhorias na criação de novos arquivos;
-adicionado suporte para excluir e renomear projetos (excluir pressionando Excluir na lista de projetos, renomear via o projeto: Renomear comando);
-* O número máximo de preferências de pastas selecionadas para 10;
-alguma documentação inicial sobre os componentes internos do Zed no manual;
-
-A próxima versão foi responsável apenas pelo lançamento SEO da Chrome Web Store. As novas funcionalidades vieram mais precisamente na versão seguinte, a 0.8.2, na qual as foi adicionada a implementação inicial da extensão para utilizar o Zed como editor para usuários que escrevem extensões do Chrome.
-
-Na versão 0.8.4 houveram mudanças significativas, como por exemplo, um suporte melhorado para builtins, ctag indexing em PHP. Além desta, as seguintes melhorias também foram implementadas:
-
-* Bloqueio de arquivo para evitar que um observador de um arquivo faça alterações no mesmo enquanto as alterações de outro usuário ainda estão sendo gravadas.
-* Substituiu-se _showdown_ com _pagedown_ para visualização Markdown
-* Controlador de cheques adicionado para permitir que várias extensões contribuam para os marcadores de erro inline
-  
----------------- mais informações restando -------------
+ 
+---------------- aguardar -------------
 
 ## Principais frameworks, ferramentas e linguagens usadas no desenvolvimento
 Os desenvolvedores e colaboradores do Zed utilizam o GitHub como plataforma de hospedagem de código, para controle de versão e colaboração, além disso possuem uma web page com todas as informações necessárias, tanto para o uso do aplicativo como também para colaborar com o desenvolvimento do projeto.
@@ -75,7 +58,7 @@ O editor de cógido usado foi o Ace (https://github.com/ajaxorg/ace) que é um e
 
 Também foram usadas outras ferramentas para o desenvolvimento do Zed, por exemplo o Architect que auxilia em aplicações Node.js, configurando os plugins do projeto. É uma estrutura simples criada pelos desenvolvedores cujo código é aberto. No entanto é poderosa para aplicações Node.js, pois usando esta ferramenta, você define uma configuração simples e mostra ao Architect quais plugins você deseja carregar. Cada plugin se registra com o Architect, então outros plugins podem utilizar as suas funções. Cada plugin é um módulo de nó completo com um arquivo package.json. e  podem ser mantidos em pacotes NPM para que possam ser descartados em outras aplicações do Architect, no entanto não há necessidade de realmente estar em NPM, pode ser uma pasta simples na árvore de código.
 
------------------------ imagem --------------------------
+![](https://lh4.googleusercontent.com/2HAcRULPgn98n5SH04Hmyj4p-HMbB2taD66L1uX1_jCqYgGP0ZT2oKSxNEduLjs_yOIu3sqJ9LnNdBF0LdL46bohvv8sdx8wFRONkt4NOWCJmiJ8KdmOdAd9I9iq1mSL1bSVXwAz)
 
 O jQuery também foi usado no desenvolvimento da aplicação, sabendo-se que o JQuery é uma biblioteca JavaScript, pequena e rica em recursos. Ele torna as coisas como documentos HTML, manipulação de eventos, animação e Ajax muito mais simples, por meio de uma uma API simples de usar, além disso ele funciona em diversos navegadores. Através de uma combinação de versatilidade e extensibilidade, o jQuery auxilia muitos desenvolvedores a escreverem códigos em JavaScript de uma forma mais eficiente.
 
@@ -86,7 +69,7 @@ Podemos citar também o RequireJS (http://requirejs.org/) que executa arquivos e
 ## Arquitetura
 Podemos separar os aspectos arquiteturais aplicativo Zed em alguns tópicos, que possuem a seguinte hierarquia:
 
--------------------------- imagem ------------------------
+![](https://lh6.googleusercontent.com/vuQRXJ6xfCzCHLVkNhgCNM6YzFsbbF1qtjh0syYuduIhJt4zG3SIuS2b8ug5mZ_Bc5JqX1yGXNQiHKnRE-5_XRuWCFyb5MFY2-1PtPKD7Z7sObqAfix5MepNilf5YR38tHg66JdP)
 
 ### Chrome App
 Chrome App é um tipo de aplicação que funciona através do Google Chrome. Essa aplicação aproveita a engine do Chrome e executa sobre os sistemas que possuem suporte ao navegador. Dessa forma, as possibilidades ao desenvolver dessa forma se expandem com relação a um simples site Web. Por questões comerciais alguns apps ficaram restritos somente a Chromebooks, o que não é o caso da aplicação que estamos documentando.
@@ -97,7 +80,7 @@ No caso do Zed o Chrome app é o aplicativo em si. Sua composição geral consis
 * Janela do editor: A janela do editor é onde se concentra o propósito geral do app, que é o código, essa janela possui funções especiais como o autocomplete inteligente (que é uma das features destacadas pelo desenvolvedores) e a atualização em tempo real para linguagens que trabalham com o aspecto visual, como Markdown e Coffeescript. 
 * Janela para abrir arquivo através do Dropbox: Essa janela possui integração com as APIs do Dropbox, o que faz com que a natureza de sua implementação seja distinta das demais. 
 
----------------------- imagem -----------------------
+![](https://lh4.googleusercontent.com/7QcP5DEeyXARuTDt_plQfxyy3DnJUQ6hH-Sh7vdHzSF7MdWQrPsG3BM-WIEVOaVPQ0GMhw_9U6AVuoaBaXjiyX7YoBEb1zzn5v_tq4TF4PhHN0uKv1zjOG_vyuHrEyMQ39yiJiJm)
 
 ### Comunicação cliente/servidor 
 A comunicação cliente/servidor é feita nos arquivos com a extensão _.go_ contidos na raiz do projeto. Dependendo da situação o arquivo _zed.go_ atuará no modo servidor ou cliente.
@@ -118,14 +101,14 @@ Os comandos são a base da interação com o usuário, quase todas as ações do
 
 A implementação dos comandos do Zed está contida no arquivo _command.js_, que por sua vez se encontra na pasta _app/js_. Existem também os atalhos, através deles os comandos são executados por padrão através da combinação de teclas _Ctrl/Command + tecla chave_. Na imagem abaixo podemos ver alguns dos comandos presentes no editor:
 
------------------------- imagem ----------------------------
+![](https://lh3.googleusercontent.com/5dxmbLdkC2qAT8D2xlR5BiRR48B4aKqKfqkrQrt53KU7anrNl2Jh3D7AZs1hfiyuoOR3nD8NZJw_tSRv1eMmF1BEKpMR-Z1L5UzE5KwTGRjaw-d_nqPnghlyF0hz9nZiy4uuXpDT)
 
 ## Requisitos não-funcionais
 Os requisitos não funcionais representam a parte técnica do sistema, como  portabilidade, usabilidade, desempenho, entre outros. Desse modo, iremos apresentar e discutir alguns desses requisitos, já que são importantes para a documentação da arquitetura do sistema. Em relação à portabilidade, o Zed funciona como um aplicativo sob a engine do Chrome, como se fosse uma extensão do navegador,  mas também ele pode ser compilado localmente off-line, dessa maneira, o usuário pode utilizá-lo nos sistemas operacionais Linux e Windows e em máquinas Mac. Também este editor permite leitura e gravação em serviços remotos como Github ou Dropbox, por exemplo. Podemos afirmar que esse aplicativo apresenta muito boa portabilidade, pois pode ser usado na maioria dos dispositivos comerciais.  
 
 Com relação à usabilidade, podemos considerar que o usuário desse editor é pelo menos intermediário, pois presume-se que possui ao menos um conhecimento básico em programação. A partir disso, podemos considerar que o aplicativo não possui problemas graves de usabilidade, os termos e os símbolos utilizados são familiares aos usuários, além disso a interface parece ser bastante amigável aos programadores. Logo após a instalação por meio do Chrome Web Store - Extensões, irá aparecer uma tela para que o usuário já possa escolher entre um formato de editor mais simples, sem menus aparentes, ou um formato similar aos editores comuns, como o Sublime, como pode ser observado na imagem logo abaixo:
 
------------------------ imagem -----------------------------
+![](https://lh5.googleusercontent.com/Iz4IK5h_FUOh1mlh33N0BuOklHvUytR_cuLWZsMh4TGupymV4sMzDumnOLnQPOAB8Eq3EVKdikWwlTi4kO8YP3tZqTj4dbMCAMcDinvQ56fD-9Tf4LWakQujZjHW8P_BQB122gj0)
 
 Após escolher o formato desejado, basta clicar em “Start using Zed” para começar a usar o editor. Um problema de usabilidade encontrado é que o usuário precisa ter ao menos um conhecimento básico na língua inglesa para poder usar e entender todas as funcionalidades desse editor de texto. A escolha de esquema de cores do editor foi adequada, pois há alto contraste, e além disso as cores são perceptíveis aos  daltônicos.
 
@@ -156,3 +139,8 @@ Nesta parte do trabalho, vamos comentar alguns dos bugs e problemas encontrados 
 * Disconnects from Dropbox when Creating a new file #589 (Desconecta do Dropbox ao criar um novo arquivo # 589): o usuário está reportando que não está conseguindo criar um arquivo em um diretório do Dropbox sem falhas no cliente.
 * Zedapp randomly zooms in on mac #586 (O Zed está aleatoriamente acionando o zoom em computadores Mac): o usuário reportou um comportamento estranho do aplicativo ao ser usado em computadores Mac, ele relata que ao usar o modo tela cheia um zoom é aplicado inesperadamente às vezes, impossibilitando o uso do menu. 
   
+## Casos de uso
+Com a finalidade de exemplificar situações em que o Zed pode ser utilizado, vamos descrever dois casos de uso:
+
+* “Clarisse, de 22 anos de idade, estudante de Sistemas de Informação necessita escrever um projeto para uma atividade de extensão na qual está participando. Ele decidiu escrever uma extensão do Chrome que possui como funcionalidade principal  identificar linguagens de programação em arquivos diversos. Dessa forma, ela decidiu ir na loja virtual do Chrome para procurar por um bom editor de texto gratuito bem avaliado pelos usuários, então ela encontrou o Zed e resolveu testá-lo.”
+* “Joesly, de 36 anos, desenvolvedor web pleno na empresa GBS Comissões, recebeu uma requisição da gerência para desenvolver um sistema de tempo real para controlar as finanças da empresa, com a finalidade de automatizar a contabilidade da empresa e poupar despesas com serviços terceirizados. Ele já estava acostumado a utilizar o editor de texto Sublime, no entanto ele decidiu  testar um outro editor e foi procurar no Google outras alternativas. Dessa forma, ele encontrou o Zed e se interessou  pela descrição dele, como ele possuía um prazo de entrega relativamente longo, ele decidiu testá-lo.”
