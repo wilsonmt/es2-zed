@@ -217,7 +217,7 @@ Nas versões seguintes são encontrados alguns refactorings importantes:
   * Markdown: desativar espaços em branco
   * Modo de guia
 
-0.11. 4
+0.11.4
 
 * Melhorias do Goto:
   * Goto (Ctrl-E / Command-E): agora também inclui correspondências do índice de símbolo (sem ter que usar o prefixo @ ou @)
@@ -240,7 +240,134 @@ Nas versões seguintes são encontrados alguns refactorings importantes:
 * Modo:
   * Modo Clojure / ClojureScript: indexação de símbolos e melhor indentação.
 
---------------------- 11.5 pra frente ---------------------
+
+0.11.5
+ 
+* Modos:
+  * Ruby: indexação de símbolos
+  * Python: melhoria da indexação de símbolos;
+  * C: indexação de símbolos;
+  * PHP: melhoria da indexação de símbolos;
+  * Java: indexação de símbolos;
+  * C #: indexação de símbolos;
+  * Destaque de sintaxe GLSL;
+  * Destaque da sintaxe da caneta;
+* Dois novos pacotes fizeram parte da distribuição padrão:
+  * Follow-complete: oferece finalizações quase-inteligentes para acessos de propriedade x.y / chamadas de método para muitos idiomas (atualmente habilitado para JavaScript, Python, Ruby, Go, Java, C #, Groovy, Lua, Nix, Rust e Scala);
+  * Bracket-check: verifica os brackes correspondentes (atualmente habilitado para Clojure, Go, Dart, Python, Ruby, Java e C #);
+* Diretórios locais (Chrome) com mais de 100 arquivos / diretórios não apareciam completamente antes, nessa versão isso é corrigido;
+* Os projetos são indexados automaticamente (para símbolos e code completion) na primeira vez que são abertos, você pode fazer isso manualmente com Tools:Index Project;
+* Agora, o projeto de pesquisa só pesquisa tipos de arquivos conhecidos e faz isso de forma mais sequencial, na tentativa de evitar crashes;
+* Combinações de teclas:
+  * combinação de teclas padrão para Find:Next em Linux / Windows / ChromeOS é agora Ctrl-G, e o Find: Previous é agora Ctrl-Shift-G;
+  * Nativate:Reload Filelist está agora ligado a Command-Shift-L no Mac e Ctrl-Shift-L no Windows / Linux / ChromeOS, bem como F5 em ambos;
+* Dotfiles (arquivos começando com.) agora aparecem na lista de arquivos, exceto aqueles definidos em gotoExcludes (por padrão .git);
+* Correções de mudança de nome de arquivo;
+
+A versão 0.12.0 foi um grande lançamento, tanto internamente (a base de código inteira foi refatorada para usar ES6-promises em vez de callbacks do tipo node.js) e externamente: agora há um opcional "tradicional" UI modo que mostra uma árvore de arquivos persistente em A esquerda e uma barra de menus ao longo do topo. Além disso, agora existe uma interface de usuário básica para gerenciar snippets.
+
+* Tela de primeira execução que pede que você escolha um layout de interface do usuário. Isto é totalmente configurável mais tarde, através de:
+  * Nova persistentTree que, quando ativada, mostra uma árvore de arquivos ao longo da esquerda;
+  * Nova preferência de showMenus que mostra um menu ao longo do topo com uma lista de comandos comuns (e suas vinculações de teclas);
+* O gerenciador de snippets (Snippet: Lista, Snippet: Add) mostra e adiciona snippets ao modo da sessão ativa no momento;
+* Comando File:New (vinculado a Command-N / Ctrl-N) que abre o go to para UI com o diretório do arquivo atualmente ativo pré-preenchido;
+* ZPM e Gerenciador de Snippet usam o modo especial ZE "Zed UI"  que destaca "botões" mais como botões, para que você possa dizer que eles são clicáveis;
+* Os modos de idioma agora podem ter uma chave completionTriggers com caracteres que devem ativar automaticamente a conclusão do código, por exemplo, “.” para JavaScript ou “->” para PHP. E como resultado...
+* A conclusão do código agora dispara automaticamente após digitar uma sequência de caracteres completionTriggers (isso pode ser ativado/desativado com a preferência autoTriggerCompletion).
+* Revisão manual grande
+* Modos:
+  * Indexação de símbolos Scala
+  * Suporte completo ao PHP
+  * Clojure segue o suporte completo
+  * Modo pepino
+* Temas:
+  * Tema Base16
+
+A versão 0.12.1 tem um fluxo muito melhorado para editar arquivos remotamente usando o zedrem. Em vez de copiar e colar URLs toda vez, agora você pode passar uma chave específica do usuário para o comando zedrem e as janelas se abrirão automaticamente quando você o usar.
+
+* Zedrem: O binário zedrem agora recebe um flag de tecla opcional onde a chave do usuário pode ser passada. Essa chave é gerada automaticamente (veja abaixo) e pode ser solicitada usando o comando Configuration: Zedrem: Get User Key. Quando transmitido, as janelas de edição aparecerão automaticamente quando você executar zedrem.
+* Zedrem: o arquivo ~ / .zedremrc (isto é: o arquivo .zedremrc no diretório $ HOME) foi estendido para ter uma entrada userKey na seção [client], isso é útil se muitas vezes editar arquivos no mesmo servidor e não Querendo passar a chave do usuário sempre.
+* Para suportar o acima, há agora uma preferência zedrem na configuração (sob preferência). Por padrão um servidor é configurado lá (remote.zedapp.org sobre SSL) e um userKey gerado. O seletor de projeto estabelecerá uma conexão persistente do websocket com este servidor para habilitar o comportamento descrito acima.
+* Zedrem: propriedade de arquivos agora é preservada.
+* Modos:
+  * Melhoria na indexação de símbolo C ++
+* Combinações de teclas:
+  * Mac: Alt-Delete agora adicionado como alternativa ao Alt-D
+* O Zed agora funciona novamente no canal do Chrome Beta (Chrome 37)
+* Os símbolos agora são listados para que eles apareçam em arquivos, em vez de baseados em comprimento.
+* Correções de bug de cursor Mutliple: mover e copiar linhas para cima e para baixo agora funciona com vários cursores, assim como o corte de espaços em branco.
+* Standalone: não mais falhas com a tela inicial.
+
+Grandes novos recursos na versão 0.13.0:
+
+* Suporte Github: Suporte para abertura, edição para repositórios Github sem a necessidade de cloná-los - direto de Zed.
+* Servidor da Web incorporado: forneça arquivos (estáticos) diretamente do Zed.
+* Mudança do Zedrem: usuários atuais do Zedrem usando userKeys da última versão: as chaves do usuário agora não estão mais armazenadas nas preferências, mas sim em um armazenamento de token fora do projeto de Configuração. Sua chave de usuário será alterada. Para detalhes, veja abaixo.
+* Suporte Github: Agora há um item "Open Github Repository" no selecionador de projeto. Na primeira vez que você clicar nele, ele pedirá que você crie um token Github que ele salvará (fora do projeto de configuração). Depois disso, um seletor de repositórios aparecerá, mas você também pode colar em URLs de Github completas imediatamente. Depois de escolher um repositório, ele pedirá que você escolha um ramo para editar.
+  * As alterações feitas em um projeto Github são salvas localmente em sua máquina em um banco de dados IndexedDB somente. Para confirmar as alterações no Github, use o comando Controle de versão: Commit (também disponível no menu "Ferramentas" se os menus estiverem ativados).
+  * Você pode redefinir as alterações feitas localmente usando o comando Version Control: Reset.
+  * Você pode criar uma filial (que será aberta em uma nova janela) usando o Controle de Versão: Criar Filial.
+* Zedrem: alterações de configuração:
+  * A chave "zedrem" sob preferências no projeto de configuração agora é ignorada, você pode remover esta chave com segurança.
+  * As chaves de usuário agora são armazenadas em uma loja de token (como são os tokens de Github), para recuperar o zedrem userKey, execute o comando Zedrem: Get User Key.
+  * Se você quiser, pode gerar uma nova chave de usuário usando o Zedrem:Generate New User Key, será necessário um reinício do Zed para que esta alteração entre em vigor.
+  * O selecionador de projeto agora mostra o status de sua conexão com o servidor zedrem selecionado na parte inferior da tela.
+* Servidor da Web incorporado - forneça arquivos diretamente do Zed (funciona tanto no aplicativo do Chrome quanto no Standalone): está disponível tanto como API de sandbox (assim você pode implementar seus próprios servidores) e com um padrão estático Servidor de arquivos pode ser executado fora da caixa.
+  * Iniciar servidor de arquivos estáticos usando o comando Tools:Static Server:Start, isso também irá abrir automaticamente o seu navegador. Uma porta é automaticamente atribuída.
+  * Parar o servidor de arquivos estáticos usando Tools:Static Server:Stop. O servidor também irá parar automaticamente quando você fecha a janela do editor.
+* Arrastar e soltar arquivos binários: este não é um recurso anunciado, mas você pode realmente arrastar e soltar arquivos em uma janela do editor Zed e "carregá-los" para o seu projeto. Isso agora também funciona corretamente com arquivos binários, como imagens.
+* Os arquivos atualmente abertos (abertos em alguma divisão) aparecerão agora na sua lista de arquivos Goto (embora na parte inferior), o Zed fará alguma sessão switcharoo  para fazer este trabalho corretamente.
+* Modos:
+  * Melhoria do suporte de indexação de símbolo C ++
+  * Modo Dockerfile (realce de sintaxe somente)
+  * Ruby: suporte de comportamento (auto-insere chaves de correspondência etc.)
+
+1.0.0
+
+* Unificação da UI: a janela do separador de projeto separada desapareceu e foi integrada em janelas de editor (usando o mesmo tema etc.). Da mesma forma a primeira execução, o projeto dropbox, github picker janelas foram todos integrados também.
+* O espaço "Notas" foi removido, devido à perda de dados muito frequente para os utilizadores, recomendamos que utilize apenas uma pasta local. 
+* Novas preferências GUI oferecendo uma maneira mais amigável de mudar as preferências, acessá-lo via Configuration:Preferences (Command -, / Ctrl-)
+* Janela de restauração no relançamento: Todas as janelas agora são restauradas após Zed sair (Zed:Quit) e reiniciar.
+* A janela nativa do Chrome (barra de título) agora é usado na versão autônoma do Zed, assim como na versão do aplicativo Chrome no Linux.
+* Destaque de sintaxe adicionado para TeX / LaTeX, Ada, Assembly, Cobol, arquivos diff, FORTH, .gitignore, Jade, Lisp, Objective-C, Pascal, R, Esquema, SQL (incluindo os sabores MySQL e Postges), SVG, Tcl, Vala, entre outros;
+* Standalone: ​​A versão do Windows agora usa o ícone Zed no desktop.
+* O tamanho da janela do editor padrão aumentou para 1024x768
+* Melhoramento da restauração do tamanho da janela do Linux.
+* Problemas corrigidos de UI UX do mouse (arrastando e soltando texto agora suportados)
+* Novos comandos:
+  * Navigate:Last Edit Point (útil para voltar ao último local que você estava editando depois de saltar para um símbolo)
+  * Window:List (lista todas as janelas abertas do Zed e permite saltar rapidamente entre elas)
+* Os atalhos de teclado foram refatorados aqui e ali para melhor suportar sistemas que não sejam Mac OS (ChromeOS, Linux, Windows) - verifique a lista de comandos quando um atalho que você estava acostumado a não funciona mais.
+* Corrigido bug de exibição Coffeescript
+
+1.0.1
+ 
+* Muitas correções de bugs
+* Atualizado para o ACE mais recente, com o modo Vim aprimorado e outras melhorias
+* Ajustes de persistência do tamanho da janela
+* Interno: bancos de dados de símbolos antigos são limpos (após 2 semanas)
+* Indexação automática de símbolos fixa
+* Modos:
+  * XML: Fixed beautify recurso
+  * Novo modo Elixer
+  * Novo modo Elm
+  * HTML: agora também abre arquivos .htm
+  * Erlang: agora também usado para arquivos de cabeçalho
+
+1.1.0
+
+* Novo tipo de projeto: Zedd Folder (para edição de arquivos locais e remotos), veja http://zedapp.org/zedd para mais detalhes sobre como e quando usar isso.
+* Suporte para execução de ferramentas externas em projetos Zedd, bem como projetos de pasta local autônoma. Isso permite novos comandos e pacotes como:
+  * Tools:External:Insert Command Output
+  * Tools:External:Filter Selection Through Command
+  * Pacote (incluído por padrão): git-tools que expõe comandos (como Git:Grep, Git:Add, Git:Commit, Git:Diff, Git:Status e Git:Blame)
+* Somente o aplicativo do Chrome: capacidade de abrir apenas um ou alguns arquivos (em vez de uma pasta inteira)
+* Número de versão Zed agora visível no selecionador de projeto
+* Divisão de temas: agora você pode configurar seu "tema de janela" e "tema de editor" separadamente
+* Várias sandboxes: muitas tarefas (como verificação, conclusão de código) agora acontecem em sandboxes separados (= threads) para acelerar determinadas tarefas. Sandboxes são automaticamente limpas após um tempo limite.
+* Melhor manuseio de projetos que não estão mais acessíveis (removidos da lista de projetos recentes quando abertos e janela de alerta)
+* Modos:
+  * Modo JSX (React) atualizado para 0.12
 
 
 ## Principais frameworks, ferramentas e linguagens usadas no desenvolvimento
