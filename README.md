@@ -47,7 +47,201 @@ Atualmente no GitHub, o Zed conta com quatro branches:
 
 ### Histórico de revisões
  
----------------- aguardar -------------
+Em suas versões atualmente disponibilizadas no GitHub, o Zed conta com um total de 27 versões. As duas primeiras versões (0.7.2 e 0.7.2), ainda trouxeram mudanças estruturais do sistema, como a substituição do comando go to pelo ACE editor, que é um editor de código embutido, é escrito em JavaScript e é substancialmente mais rápido especialmente em projetos maiores. Além dessa, foram implementadas funcionalidades para comandos de teclado como o _Up_ ou _Shift-Tab_ para subir e _Down_ ou _Tab_ para descer a lista e _Enter_ para abrir o projeto selecionado.
+
+A partir da versão 0.8.0 já começamos a encontrar mudanças mais relativas à personalização do produto. São elas:
+
+* A mudança do suporte "zed - local" para o uso do suporte ao Chrome 31 + Pasta Local;
+* Mudança de comportamento de criação de arquivo: ao criar acidentalmente um arquivo, por exemplo, navegando para /whoops e pressionando enter, o arquivo agora é criado somente quando você digita algo nele. Se você navegar imediatamente, o arquivo não será criado;
+* sugestões de melhorias na criação de novos arquivos;
+* adicionado suporte para excluir e renomear projetos (excluir pressionando Excluir na lista de projetos, renomear via o projeto: Renomear comando);
+* o número máximo de preferências de pastas selecionadas para 10;
+* alguma documentação inicial sobre os componentes internos do Zed no manual;
+  
+A próxima versão foi responsável apenas pelo lançamento SEO da Chrome Web Store. As novas funcionalidades vieram mais precisamente na versão seguinte, a 0.8.2, na qual as foi adicionada a implementação inicial da extensão para utilizar o Zed como editor para usuários que escrevem extensões do Chrome.
+
+Na versão 0.8.4 houveram mudanças significativas, como por exemplo, um suporte melhorado para builtins, ctag indexing em PHP. Além desta, as seguintes melhorias também foram implementadas:
+
+* Bloqueio de arquivo para evitar que um observador de um arquivo faça alterações no mesmo enquanto as alterações de outro usuário ainda estão sendo gravadas;
+* Substituiu-se “showdown” com “pagedown” para visualização Markdown;
+* Controlador de cheques adicionado para permitir que várias extensões contribuam para os marcadores de erro inline;
+* HTML/CSS agora levam o tabSize em conta;
+* Adicionado uma versão inicial de um verificador ortográfico (Apenas em Inglês);
+
+As mudanças observadas na versão 0.8.5 já trazem consigo melhorias na ferramenta dignas de um editor de códigos dos mais tradicionais. Abaixo segue uma lista não extensiva dos itens modificados: 
+
+* Adicionado o suporte para "Tool: Fix", uma infra-estrutura genérica para executar comandos arbitrários que podem "corrigir" código ou texto (por exemplo, corrigir um erro ortográfico, oferecer sugestões de palavras baseadas em sinônimos, renomear uma variável, etc.). Este Fix está vinculado a “Command - Enter / Ctrl-Enter”;
+* Adicionado um fixer para o verificador ortográfico;
+* Editor loading mais rápido: não analisa mais todos os arquivos abertos no editor, mas o faz quando o usuário o solicita;
+* O painel “go to” agora também suporta o “PgUp” e “PgDown” da mesma forma que manter pressionado os botões “Up”, “Down”, “Tab”, “Shift-Tab” para manter a rolagem da tela;
+
+Já na versão 0.9.0, as mudanças tomaram um rumo mais de personalizações gráficas. Analisemos a lista de modificações principais:
+
+* Revisão do tema: os temas utilizados agora são parte do Zed (antes eles pertenciam ao ACE), criados utilizando arquivos de configuração na configuração do projeto. Usuários podem agora criar temas customizados a partir do projeto de configuração;
+* Foi criado um tema dark customizado para o Zed, que agora é o padrão;
+* O projeto de configuração agora possui um README;
+* Fixed bug where Zed would always say even when it was available;
+* Correção do bug onde o Zed sempre indicava "No preview available" (Sem visualização disponível) mesmo quando havia visualização disponível;
+
+Na versão 9.0.1 as mudanças foram mais superficiais, assim como na 0.9.2 que apenas limitou o comando “Find:All” ao “Ctrl-Alt-F”.    
+
+Lista de atualizações da versão 9.0.1:
+
+* Atualização do texto de introdução na entrada do editor Zed (anteriormente o "Zed Cheatsheet");
+* Vinculação à árvore com o comando “Ctrl-T” no Linux / Windows / ChromeOS;
+* Passou-se a utilizar o conjunto de fontes nas preferências para a barra de edição e barra de contexto;
+* Comando Find:All para colocar cursores em todas as instâncias da seleção atual;
+
+A versão seguinte veio com poucas mas significativas mudanças. São as que seguem:
+* Adicionado modo RHTML
+* Adicionado a capacidade de adicionar globais extras para JSHint
+* Zed::log documento que dá algumas informações do que Zed está fazendo nos bastidores (eventualmente, isso também contêm mensagens sandbox).
+
+Ao contrário da versão anterior, esta trouxe alguns novos recursos importantes, que não foram muito bem documentados , pois a intenção era mesmo esperar para expô-los.
+
+* Foi introduzido um um gerenciador de pacotes embutido, o ZPM;
+* O código Sandbox passa a poder usar a sintaxe CommonJS sem o require.js como boiler plate;
+* Pequenos ajustes no tema;
+* Novo documento zed::log que fornece acesso a mensagens de log internas do Zed (e sandbox);
+* Suporte às linguagens:
+  * Sass
+  * Perl
+  * Python (fragmentos)
+* Correção do JSHint, onde a palavra errada estava sendo sublinhada quando havia o uso de tab
+* Capacidade de mover o projeto de configuração para a pasta local (via Configuration:Store in Local Folder)
+* Limpar espaços em branco no comando de alternância de linhas vazias (lines toggle command)
+* Ajustes de key binding
+
+Alguns melhoramentos e vários bug fixes foram realizados na versão 0.10:
+
+* A barra de edição foi incorporada com a barra de título;
+* Novo e melhorado whitespace stripper contido na caixa de areia;
+* Adicionado flag "interna" aos comandos para não mostrar comandos úteis apenas para uso interno;
+* Comandos de Janela (Janela: Fechar, Janela: Minimizar etc);
+* Várias novas APIs de sandbox;
+* Novo arquivo /user.css no projeto de configuração para substituir qualquer estilo de editor desejado (independente do tema);
+* Foram movidas todas as preferências para alternar comandos para a sandbox;
+* Nova preferência globalAutoRevert para recarregar automaticamente os arquivos alterados sem a necessidade de perguntar a toda hora;
+* Implementação inicial da conclusão de código contínuo (não bug ainda livre e desativado por padrão sob a preferência continuousCompletion).
+
+Nas versões seguintes são encontrados alguns refactorings importantes:
+ 
+0.10.1
+
+* Importante: todas as APIs de sandbox (e pacotes) foram agora refatoradas para usar o JavaScript nativo;
+* Os comandos Sandbox agora podem solicitar entradas como "texto", "cursor", que injetará valores diretamente no argumento do primeiro argumento para o comando;
+* Os modos JSON e JavaScript foram extraídos em pacotes Zed e serão mantidos atualizados automaticamente fora do ciclo de lançamento do Zed;
+* Zed tema CSS agora será atualizado automaticamente à medida que você editá-lo;
+* Identação automática no comando de colar;
+* Localização de case insensitive.
+
+0.10.2
+
+8 Refatoração da base de código do Zed para usar plug-ins do Architect, facilitando a criação da versão autônoma do Zed (sem dependência do Chrome);
+* Novos comandos:
+  * Ajuda: Comandos (vinculados a F1 por padrão) fornece uma lista sensível ao contexto de todos os comandos Zed disponíveis em seu modo atual, documentação (se disponível) e atalho de teclado atual (por robru);
+  * Ferramentas: O “Document Statistics” fornece algumas estatísticas úteis sobre o seu documento atual (contagem de palavras, contagem de linhas, contagem de caracteres etc.);
+* Atualizações do Sandbox:
+  * Foram adicionados comandos ao sandbox para chamar go to e invocar arbitrariamente outros comandos;
+  * Foi adicionado um handler de “click” para o sandbox;
+* Modos de idioma:
+  * Modo separado de SCSS;
+  * Modo Scala;
+  * Mode agora está definido para arquivos sem uma extensão de arquivo baseando-se na linha Unix shebang, exemplo: #!/Bin/bash usa o modo bash;
+* O carregamento da configuração ficou mais robusto, mesmo se user.json contiver erros de análise JSON;
+* Pequenas correções do eliminador de espaço em branco;
+* Correções na identação no momento de “colar”;
+* Algumas pequenas atualizações do manual (particularmente a documentação config.md);
+
+0.11
+
+* Standalone:
+  * Primeiro lançamento do Zed standalone;
+  * Possibilidade de abrir o Zed por linha de comando passando “zed” para o terminal. No Mac, é necessário a instalação das ferramentas de CLI através da ferramenta Tools:Install Mac CLI ou o menu Ferramentas nativas no aplicativo Mac para essa finalidade;
+* Suporte a várias combinações de teclas para atalhos. Atalhos do Vim e Emacs. Use os comandos configuration:Preferences:KeyBinding:* ara alternar entre eles.
+* Novos comandos:
+  * File:Copy
+* Modos de idioma:
+  * Python agora tem indexação CTags
+  * Possibilidade de desativar determinadas opções do CSSLint
+* Bugs corrigidos:
+  * Corrigido um bug em que, quando o histórico do projeto está vazio, nenhum novo projeto é adicionado.
+
+0.11.1
+
+* Novo salvamento automático constante com a proposta de ser mais amigável para pessoas que usam sistemas de compilação compartilhados;
+  * Ao alternar entre divisões;
+  * Ao alternar entre arquivos;
+  * Quando o editor perde o foco;
+  * E opcionalmente: após um número x de milissegundos de inatividade (definido como saveTimeout para 0 para ser desativado);
+* Comandos para mover divisões: (Split:Move To *);
+* Novos splits agora recebem foco automaticamente;
+* O número da versão agora aparece no seletor de projeto;
+* Correções para a árvore de arquivos;
+* As mensagens do Sandbox agora aparecem no zed :: log para versão autônoma;
+* A configuração agora usa o formato JSON5 (que suporta comentários, etc.);
+* Correções para recortar URLs remotos ao colar;
+* Correções de atualização automática do ZPM;
+* Preferências scrollPastEnd;
+* Modos:
+  * O modo PHP agora inclui um analisador e relata erros de análise;
+  * Modo de Livescript;
+  * Modo Groovy;
+  * Modo JSX;
+  * Melhoria do estilo de visualização do Markdown;
+
+0.11.2
+ 
+* Nova extensão do Chrome "Edit in Zed" para a versão do Zed Chrome: adiciona um pouco de on-hover no ícone do Zed sobre as áreas de texto em qualquer site no Chrome. Ao clicar nele, você pode editar o conteúdo desta área de texto usando o Zed. O download da extensão é a partir da Chrome Store;
+* Coleção de dados de uso: no primeiro lançamento, será solicitado a concordância  em coletar dados de uso anônimos. Isso para ajudar a obter recursos (por exemplo, modos de linguagem) que as pessoas estão usando e o que devem melhorar;
+* Correção do suporte do pacote GitHub ZPM;
+* Correção: embelezamento de código (formatação) para trabalhos de work now;
+* Preferências scrollPastEnd;
+* Modos:
+  * O modo JSX (react.js) agora tem o suporte JSHint;
+  * O modo Ruby agora também funciona em Vagrantfile;
+  * Várias correções de bugs menores (por robru e outros);
+
+0.11.3
+
+* ZeDB: uma simples camada de abstração em cima de IndexedDB. Os pacotes e outros códigos de sandbox podem criar seus próprios armazenamentos de dados e índices (através da chave de bancos de dados na configuração) e ler, gravar e consultar esses dados rapidamente. Este sistema é usado principalmente para indexação de símbolos e code completion;
+* Retrabalho completo do sistema genérico de indexação de projetos, agora armazenando informações de símbolos no IndexedDB para uma recuperação mais rápida (do que /arquivo de tags no formato ctags que era utilizado);
+* Suporte para assinaturas de funções completas, ícones na lista de símbolos (Command-R / Ctrl-R) e code completion para determinados idiomas (JavaScript, Go, outros);
+* Regex baseado em símbolos de propósito geral permitem adicionar a indexação básica de símbolos a modos sem escrever qualquer JavaScript;
+* Comandos adicionais de vários cursores: Cursor:Multiple:Add Above Skip Current e Cursor:Multiple:Add Below Skip Current;
+* Estar sozinho:
+* Não trava mais quando ocorre uma exceção;
+* Não salva a posição da janela para janelas minimizadas;
+* Modos:
+  * Novo modo matlab
+  * Markdown: desativar espaços em branco
+  * Modo de guia
+
+0.11. 4
+
+* Melhorias do Goto:
+  * Goto (Ctrl-E / Command-E): agora também inclui correspondências do índice de símbolo (sem ter que usar o prefixo @ ou @)
+  * Novo algoritmo fuzzy de correspondência:
+     * Agora também procura nomes de diretório de arquivos por padrão.
+     * As sequências de caracteres agora têm que corresponder exatamente, os espaços podem ser usados ​​como curingas. Por exemplo, "Bcd" corresponde a "abcde" mas não "abccde", no entanto "bc d" irá corresponder "abccde".
+     * A pontuação é agora baseada em quão perto a correspondência do padrão é até o final do caminho, quanto mais perto do final, maior a pontuação. Isso favorece o nome do arquivo corresponde ao nome do diretório, o que normalmente é o que você procura.
+  * Melhorias de pesquisa de projetos:
+     * Agora é integrado no goto (Ctrl-Shift-F / Command-Shift-F).
+     * Nova sintaxe de consulta: searchphrase [-flags] [padrão de caminho de arquivo] por exemplo: hello ou hello * .js ou hello -i (pesquisa insensível a maiúsculas e minúsculas) he * llo -ie /docs/*.md (pesquisa regex insensível a maiúsculas e minúsculas). Sinalizadores com suporte: -i (correspondência entre maiúsculas e minúsculas) e -e (correspondência regex).
+ 
+* Batched undo: você não precisa mais executar undo para cada caractere, certas operações (incluindo digitação e exclusão) são agora agrupadas.
+* Melhor comportamento ao "fechar" uma divisão (indo de 2 para 1 divisão): a divisão esquerda irá agora conter o arquivo na divisão ativa.
+* Correção de bugs: Corrigir o posicionamento da janela após a restauração.
+* Correção de bugs: melhor recuperação de configurações quebradas.
+* Correção de bugs: não mostra mais caixas de diálogo "arquivo alterado" empilhadas para cada alteração.
+* API Sandbox:
+  * Zed / http API agora também tem POST, PUT, DELETE etc apoio e retorna não apenas conteúdo, mas também cabeçalhos (por akoenig).
+  * Zed / preview API agora suporta abrir a divisão de visualização (por akoenig).
+* Modo:
+  * Modo Clojure / ClojureScript: indexação de símbolos e melhor indentação.
+
+--------------------- 11.5 pra frente ---------------------
+
 
 ## Principais frameworks, ferramentas e linguagens usadas no desenvolvimento
 Os desenvolvedores e colaboradores do Zed utilizam o GitHub como plataforma de hospedagem de código, para controle de versão e colaboração, além disso possuem uma web page com todas as informações necessárias, tanto para o uso do aplicativo como também para colaborar com o desenvolvimento do projeto.
