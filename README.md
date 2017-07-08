@@ -1,7 +1,7 @@
 # Zed
 
 ## Introdução
-Neste trabalho foi solicitado que fosse escolhido um projeto de código aberto presente no repositório GitHub com a finalidade de documentá-lo. Dessa forma, foi selecionado o Zed que é um editor de texto que pode alterar arquivos locais e remotos em qualquer servidor. Ele desenvolvido por meio de tecnologias web e apresenta significativa relevância devido ao grande número de estrelas  e de colaboradores que possui, além da sua utilidade para desenvolvedores e pessoas que queriam ingressar na área de desenvolvimento. A imagem logo abaixo mostra um exemplo de uso do aplicativo.
+Este é um trabalho para a disciplina de Engenharia de Software II, onde foi solicitado que fosse escolhido um projeto de código aberto presente no repositório GitHub com a finalidade de documentá-lo. O projeto selecionado selecionado foi o Zed, que é um editor de texto que pode alterar arquivos locais e remotos em qualquer servidor. Ele desenvolvido por meio de tecnologias web e apresenta significativa relevância devido ao grande número de estrelas  e de colaboradores que possui, além da sua utilidade para desenvolvedores e pessoas que queriam ingressar na área de desenvolvimento.
 
 ## Descrição do Sistema
 Zed é um editor de texto que foi desenvolvido utilizando tecnologias web, funcionando como um app do Chrome. De acordo com os desenvolvedores, o editor foi projetado com a ideia de repensar algumas características que permeiam os atuais editores de texto. Segundo eles, algumas das principais características do editor Zed são justamente as funcionalidades que ele não possui, como tabs, árvore de arquivos sempre visível, menus, botões, sinos e apitos.
